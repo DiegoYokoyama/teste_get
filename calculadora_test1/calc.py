@@ -21,3 +21,25 @@ class CalculatorApp(App):
 
 if __name__ == '__main__':
 	CalculatorApp().run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ def raiz(self):
+        try:
+           value = self.ids.txtinput.text
+           new_value = math.sqrt(float(value))
+           self.ids.txtinput.text = str(new_value)
+        except:
+          self.ids.txtinput.text = 'Error' 

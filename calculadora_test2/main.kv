@@ -1,13 +1,7 @@
 
-
 <Calculator>:
 	txtinput:txtinput
 	BoxLayout:
-		canvas:
-			
-			Rectangle:
-				size: self.size
-				pos: self.pos
 		orientation: 'vertical'
 		BoxLayout:
 			size_hint_y: 0.2
@@ -15,21 +9,22 @@
 				text: 'Kivy Scientific Calculator ' 
 				text_size: self.size
 				italic: True
-				
+				color: 0,1,0
 				bold: True
 			Label:
 				size_hint_x: 0.3
 				text: 'ver0.0'
 				text_size: self.size
 				italic: True
-				
+				color: 0,0,1
 				bold: True
 
 			
 
 		BoxLayout:
 			canvas:
-				
+				Color:
+					rgb: 1,1,1
 				Rectangle:
 					size: self.size
 					pos: self.pos
@@ -41,15 +36,10 @@
 				font_size: 50
 				readonly: True
 		GridLayout:
-			canvas:
-				
-				Rectangle:
-					size: self.size
-					pos: self.pos
 			rows:3
 			cols: 4
 			Button:
-				text: 'C'
+				text: 'Clr'
 				on_release: root.ac_clear()
 			Button:
 				text: 'del'
@@ -57,6 +47,9 @@
 			Button:
 				text: '%'
 				on_release: root.percentage()
+			Button:
+				text: '+/-'
+				on_release: root.add_sub()
 			Button:
 				text: 'pi'
 				on_release: root.pi()
@@ -74,12 +67,6 @@
 				on_release: root.deg()
 
 		GridLayout:
-			#Yellow
-			canvas:
-				
-				Rectangle:
-					size: self.size
-					pos: self.pos
 			cols: 4
 			rows: 3
 			Button:
@@ -119,11 +106,6 @@
 				text: '-'
 				on_release: root.txtinput.text += '-'
 		BoxLayout:
-			canvas:
-				
-				Rectangle:
-					size: self.size
-					pos: self.pos
 			GridLayout:
 				rows: 2
 				size_hint_x: 0.75
@@ -135,10 +117,16 @@
 					Button:
 						text: '0'
 						on_release: root.txtinput.text += '0'
-					Button:
-						text: '+/-'
-						on_release: root.add_sub()
-					
+					BoxLayout:
+						Button:
+							text: '('
+							on_release: root.txtinput.text += '('
+						Button:
+							text: ')'
+							on_release: root.txtinput.text += ')'
+				Button:
+					text: '='
+					on_release: root.calculate()
 
 				
 			BoxLayout:
@@ -147,9 +135,5 @@
 				Button:
 					text: '+'
 					on_release: root.txtinput.text += '+'
-
-				Button:
-					text: '='
-					on_release: root.calculate()
 				
 				
